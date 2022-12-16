@@ -1,0 +1,72 @@
+{
+    "name": "Ubuntu 22.04 Developer Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".",
+        "args": {}
+    },
+    "remoteEnv": {
+        "DISPLAY": "${localEnv:DISPLAY}",
+        "CONTAINER_HOST": "unix:/var/run/docker.sock",
+        "USER": "${localEnv:USER}",
+        "KUBECONFIG": "${localEnv:KUBECONFIG}",
+        "SHELL": "${localEnv:SHELL}"
+    },
+    "customizations": {
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "python.defaultInterpreterPath": "/venv/bin/python",
+                "python.linting.pylintEnabled": false,
+                "python.linting.flake8Enabled": true,
+                "python.linting.mypyEnabled": true,
+                "python.linting.enabled": true,
+                "python.testing.pytestArgs": [],
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestEnabled": true,
+                "python.formatting.provider": "black",
+                "python.languageServer": "Pylance",
+                "editor.formatOnSave": true,
+                "editor.codeActionsOnSave": {
+                    "source.organizeImports": true
+                }
+            },
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                "ms-python.python",
+                "tamasfe.even-better-toml",
+                "redhat.vscode-yaml",
+                "ryanluker.vscode-coverage-gutters",
+                "mhutchie.git-graph",
+                "eamodio.gitlens"
+            ]
+        }
+    },
+    // make sure podman outside is serving a socket
+    "initializeCommand": "systemctl --user start podman.socket",
+    "runArgs": [
+        "--security-opt=label=disable",
+        "--annotation=run.oci.keep_original_groups=1",
+        "--storage-opt=ignore_chown_errors=true",
+        "--net=host",
+        "-v=${localEnv:HOME}/.ssh:/root/.ssh",
+        "-v=${localEnv:HOME}/.bash_history:/root/.bash_history",
+        "-v=${localWorkspaceFolder}/.devcontainer/.bashrc_dev:/root/.bashrc",
+        "-v=${localWorkspaceFolder}/.devcontainer/.inputrc:/root/.inputrc",
+        "-v=${localWorkspaceFolder}/.devcontainer/postCreateCommand.sh:/root/postCreateCommand.sh",
+        "-v=${localEnv:XDG_RUNTIME_DIR}/podman/podman.sock:/var/run/docker.sock"
+        // uncomment these to authenticate to DLS kubernetes clusters
+        // "-v=/dls_sw/apps/kubernetes/pollux/:/dls_sw/apps/kubernetes/pollux/",
+        // "-v=/dls_sw/apps/kubernetes/argus/:/dls_sw/apps/kubernetes/argus/"
+    ],
+    "mounts": [
+        "source=${localEnv:HOME},target=${localEnv:HOME},type=bind,consistency=cached",
+        "source=/tmp,target=/tmp,type=bind,consistency=cached"
+    ],
+    // mount the parent folder so we can add peers to the workspace
+    // use localWorkspaceFolder so that paths inside and outside the container match
+    "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
+    "workspaceFolder": "${localWorkspaceFolder}",
+    // add personal post install commands to postCreateCommand.sh
+    "postCreateCommand": "bash /root/postCreateCommand.sh"
+}
