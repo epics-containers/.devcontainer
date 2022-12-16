@@ -5,7 +5,7 @@
 # This Dockerfile is built locally when creating a devcontainer,
 # it is intended for individual developer customization
 
-FROM ghcr.io/epics-containers/dev-u22-workspace
+FROM ghcr.io/epics-containers/dev-u22
 
 RUN pip install python3-pip-skeleton[dev] epics-containers-cli ibek
 
