@@ -1,5 +1,5 @@
 # .devcontainer
-vscode devcontainer configuration for working with EPICS Containers
+vscode devcontainer configuration for working with EPICS Containers / Python projects
 
 # Base container
 This project is a companion to the dev-u22 developer container project. It bases
