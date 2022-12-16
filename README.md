@@ -32,6 +32,7 @@ That's it you now have a devcontainer workspace.
 
 If you wish to install additional python packages or do any other setup 
 at container creation time then make changes to the this file:
+
 [postCreateCommand.sh](postCreateCommand.sh)
 
 Changes in this file will get executed at the start of each new
@@ -43,7 +44,8 @@ to make changes on a per workspace basis without dirtying your
 .devcontainer repo.
 
 ## Customization at container build time
-When vscode launches the container it does a build using the this Dockerfile
+When vscode launches the container it does a build using the this Dockerfile]
+
 [Dockerfile](Dockerfile)
 
 Add or remove installation steps as needed.
