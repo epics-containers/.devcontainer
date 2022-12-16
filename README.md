@@ -13,6 +13,14 @@ Most likely you want to fork this repo to create your personal developer contain
 
 These steps clone directly from this repo, but you get the idea!
 
+For best results get your container's bash rc configured first:
+
+- copy the following file to your home directory
+- https://raw.githubusercontent.com/epics-containers/dev-u22/main/host/.bashrc_dev
+- edit the file to fix user specific entries
+
+Then create your vscode workspace as follow:
+
 - cd root_folder_for_your_new_workspace
 - git clone https://github.com/epics-containers/.devcontainer
 - code .devcontainer
