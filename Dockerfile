@@ -5,10 +5,27 @@
 # This Dockerfile is built locally when creating a devcontainer,
 # it is intended for individual developer customization
 
+
 FROM ghcr.io/epics-containers/dev-u22
 
+ENV PYTHON_VERSION 3.11
+ENV VIRTUALENV=/venv
+
+# install required python version (from deadsnakes provided by dev-u22)
+# you can delete this line if you choose 3.10 which is in u22 by default
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get -y install python${PYTHON_VERSION} python${PYTHON_VERSION}-venv
+
+# set up a global virtual environ for all projects in the container
+RUN python${PYTHON_VERSION} -m venv ${VIRTUALENV}
+ENV PATH=${VIRTUALENV}/bin:$PATH
+
+# make sure we have the latest pip
+RUN pip install --upgrade pip
+# install the pip-skeleton developer dependencies
 RUN pip install python3-pip-skeleton[dev] epics-containers-cli ibek
 
 # create the cli-tools subcontainer launchers
 ENV PATH=/cli-tools/tools:$PATH
 RUN git clone https://github.com/epics-containers/cli-tools.git
+

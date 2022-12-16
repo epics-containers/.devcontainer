@@ -4,7 +4,7 @@ vscode devcontainer configuration for working with EPICS Containers
 # Base container
 This project is a companion to the dev-u22 developer container project. It bases
 the dev container on the image published by dev-u22. Here:
-https://github.com/epics-containers/dev-u22/pkgs/container/dev-u22-workspace
+https://github.com/epics-containers/dev-u22/pkgs/container/dev-u22
 
 # How to Use
 
@@ -30,7 +30,7 @@ That's it you now have a devcontainer workspace.
 
 ## Customization at container launch time
 
-If you wish to install additional python packages or do any other setup 
+If you wish to install additional python packages or do any other setup
 at container creation time then make changes to the this file:
 
 [postCreateCommand.sh](postCreateCommand.sh)
@@ -40,7 +40,7 @@ container instance but do not require rebuilding the container image.
 
 Note that this file is in .gitignore because you may have multiple
 workspaces with different python projects. You can use this file
-to make changes on a per workspace basis without dirtying your 
+to make changes on a per workspace basis without dirtying your
 .devcontainer repo.
 
 ## Customization at container build time
