@@ -1,6 +1,12 @@
 # .devcontainer
 vscode devcontainer configuration for working with EPICS Containers
 
+# Base container
+This project is a companion to the dev-u22 developer container project. It bases
+the dev container on the image published by dev-u22. Here:
+https://github.com/epics-containers/dev-u22/pkgs/container/dev-u22-workspace
+
+# How to Use
 
 ## Quick Start for a Workspace
 Most likely you want to fork this repo to create your personal developer container.
@@ -22,5 +28,24 @@ These steps clone directly from this repo, but you get the idea!
 
 That's it you now have a devcontainer workspace.
 
+## Customization at container launch time
+
+If you wish to install additional python packages or do any other setup 
+at container creation time then make changes to the this file:
+[postCreateCommand.sh](postCreateCommand.sh)
+
+Changes in this file will get executed at the start of each new
+container instance but do not require rebuilding the container image.
+
+Note that this file is in .gitignore because you may have multiple
+workspaces with different python projects. You can use this file
+to make changes on a per workspace basis without dirtying your 
+.devcontainer repo.
+
+## Customization at container build time
+When vscode launches the container it does a build using the this Dockerfile
+[Dockerfile](Dockerfile)
+
+Add or remove installation steps as needed.
 
 
