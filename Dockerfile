@@ -8,13 +8,13 @@
 
 FROM ghcr.io/epics-containers/dev-u22
 
-ENV PYTHON_VERSION 3.11
+ENV PYTHON_VERSION 3.10
 ENV VIRTUALENV=/venv
 
 # install required python version (from deadsnakes provided by dev-u22)
-# you can delete this line if you choose 3.10 which is in u22 by default
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get -y install python${PYTHON_VERSION} python${PYTHON_VERSION}-venv
+# uncomment below when not using python3.10 (which is default for ubuntu 22.04)
+# RUN DEBIAN_FRONTEND=noninteractive \
+#     apt-get -y install python${PYTHON_VERSION} python${PYTHON_VERSION}-venv
 
 # set up a global virtual environ for all projects in the container
 RUN python${PYTHON_VERSION} -m venv ${VIRTUALENV}
