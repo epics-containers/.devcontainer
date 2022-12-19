@@ -26,6 +26,6 @@ RUN pip install --upgrade pip
 RUN pip install python3-pip-skeleton epics-containers-cli
 
 # create the cli-tools subcontainer launchers
-ENV PATH=/cli-tools/tools:$PATH
+ENV PATH=${PATH}:/cli-tools/tools
 RUN git clone https://github.com/epics-containers/cli-tools.git
 
