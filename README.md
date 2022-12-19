@@ -1,5 +1,5 @@
 # .devcontainer
-vscode devcontainer configuration for working with EPICS Containers
+vscode devcontainer configuration for working with EPICS Containers / Python projects
 
 # Base container
 This project is a companion to the dev-u22 developer container project. It bases
@@ -12,6 +12,14 @@ https://github.com/epics-containers/dev-u22/pkgs/container/dev-u22
 Most likely you want to fork this repo to create your personal developer container.
 
 These steps clone directly from this repo, but you get the idea!
+
+For best results get your container's bash rc configured first:
+
+- copy the following file to your home directory
+- https://raw.githubusercontent.com/epics-containers/dev-u22/main/host/.bashrc_dev
+- edit the file to fix user specific entries
+
+Then create your vscode workspace as follow:
 
 - cd root_folder_for_your_new_workspace
 - git clone https://github.com/epics-containers/.devcontainer
