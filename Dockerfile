@@ -22,8 +22,8 @@ ENV PATH=${VIRTUALENV}/bin:$PATH
 
 # make sure we have the latest pip
 RUN pip install --upgrade pip
-# install the pip-skeleton developer dependencies
-RUN pip install python3-pip-skeleton[dev] epics-containers-cli ibek
+# install epics containers python tools
+RUN pip install python3-pip-skeleton epics-containers-cli
 
 # create the cli-tools subcontainer launchers
 ENV PATH=/cli-tools/tools:$PATH
