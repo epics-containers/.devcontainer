@@ -56,8 +56,13 @@
         "-v=${localWorkspaceFolder}/.devcontainer/postCreateCommand.sh:/root/postCreateCommand.sh",
         "-v=${localEnv:XDG_RUNTIME_DIR}/podman/podman.sock:/var/run/docker.sock"
         // uncomment these to authenticate to DLS kubernetes clusters
-        // "-v=/dls_sw/apps/kubernetes/pollux/:/dls_sw/apps/kubernetes/pollux/",
-        // "-v=/dls_sw/apps/kubernetes/argus/:/dls_sw/apps/kubernetes/argus/"
+        //   "-v=/dls_sw/apps/kubernetes/pollux/:/dls_sw/apps/kubernetes/pollux/",
+        //   "-v=/dls_sw/apps/kubernetes/argus/:/dls_sw/apps/kubernetes/argus/"
+        // OR copy the CRT files locally (from outside the container) like this:
+        //   cp /dls_sw/apps/kubernetes/pollux/ca.crt ${HOME}/.kube/pollux.crt
+        //   sed -i s=/dls_sw/apps/kubernetes/pollux/ca.crt=pollux.crt= ${HOME}/.kube/config_pollux
+        //   cp /dls_sw/apps/kubernetes/argus/ca.crt ${HOME}/.kube/argus.crt
+        //   sed -i s=/dls_sw/apps/kubernetes/argus/ca.crt=argus.crt= ${HOME}/.kube/config_argus
     ],
     "mounts": [
         "source=${localEnv:HOME},target=${localEnv:HOME},type=bind,consistency=cached",
