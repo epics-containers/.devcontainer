@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# pip install editable the folders passed to this script
+# e.g.
+#   cd .devcontainer
+#   ./pie ../*
+#
+# Will install editable mode all the folders in the current workspace
+# note that non-python projects will be ignored
+
+if [ $# -eq 0 ]; then
+    echo "Usage: pie <folder> [<folder> ...]"
+    echo
+    echo "pip install in editable mode the folders passed to this script"
+    exit 1
+fi
+
+for folder in "$@"; do
+    if [ -d "$folder" ]; then
+        if [[ -f "$folder/setup.cfg" || -f "$folder/pyproject.toml" ]]; then
+            echo "installing $folder ..."
+            pip install --config-settings editable_mode=compat -e "$folder"[dev]
+        else
+            echo "skipping non-python project $folder"
+        fi
+    fi
+done
+
