@@ -5,8 +5,8 @@
 # This Dockerfile is built locally when creating a devcontainer,
 # it is intended for individual developer customization
 
-
-FROM ghcr.io/epics-containers/dev-u22
+# UPDATE this version as needed
+FROM ghcr.io/epics-containers/dev-u22:0.1.1
 
 ENV PYTHON_VERSION 3.10
 ENV VIRTUALENV=/venv
@@ -28,4 +28,8 @@ RUN pip install python3-pip-skeleton epics-containers-cli
 # create the cli-tools subcontainer launchers
 ENV PATH=${PATH}:/cli-tools/tools
 RUN git clone https://github.com/epics-containers/cli-tools.git
+
+
+
+
 

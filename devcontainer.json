@@ -53,7 +53,6 @@
         "-v=${localEnv:HOME}/.bash_history:/root/.bash_history",
         "-v=${localWorkspaceFolder}/.devcontainer/.bashrc_dev:/root/.bashrc",
         "-v=${localWorkspaceFolder}/.devcontainer/.inputrc:/root/.inputrc",
-        "-v=${localWorkspaceFolder}/.devcontainer/postCreateCommand.sh:/root/postCreateCommand.sh",
         "-v=${localEnv:XDG_RUNTIME_DIR}/podman/podman.sock:/var/run/docker.sock"
         // uncomment these to authenticate to DLS kubernetes clusters
         //   "-v=/dls_sw/apps/kubernetes/pollux/:/dls_sw/apps/kubernetes/pollux/",
@@ -71,7 +70,7 @@
     // mount the parent folder so we can add peers to the workspace
     // use localWorkspaceFolder so that paths inside and outside the container match
     "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
-    "workspaceFolder": "${localWorkspaceFolder}",
-    // add personal post install commands to postCreateCommand.sh
-    "postCreateCommand": "bash /root/postCreateCommand.sh"
+    "workspaceFolder": "${localWorkspaceFolder}"
+    // add personal post install commands to run inside the container here e.g.:
+    // "postCreateCommand": "pip install -r requirements.txt"
 }
