@@ -44,7 +44,7 @@ function parse_git_branch {
 }
 
 # make a useful prompt, including current container name
-PS1="\[\e[32m\]\$(parse_git_branch)\[\e[m\][\[\e[34m\]\[\e[m\]\W]\$ "ex
+PS1="\[\e[32m\]\$(parse_git_branch)\[\e[m\][\[\e[34m\]\[\e[m\]\W]\$ "
 export PS1="[\[\e[31m\]${DEV_PROMPT:-container}\[\e[m\]]${PS1}"
 
 ############ REPLACE all environment below with your details ###################
