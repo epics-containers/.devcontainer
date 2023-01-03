@@ -1,5 +1,5 @@
 {
-    "name": "Ubuntu 22.04 Developer Container",
+    "name": "dev-e7 Ubuntu LTS",
     "build": {
         "dockerfile": "Dockerfile",
         "context": ".",

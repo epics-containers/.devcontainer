@@ -6,7 +6,7 @@
 # it is intended for individual developer customization
 
 # UPDATE this version as needed
-FROM ghcr.io/epics-containers/dev-u22:0.1.1
+FROM ghcr.io/epics-containers/dev-e7:0.2
 
 ENV PYTHON_VERSION 3.10
 ENV VIRTUALENV=/venv
