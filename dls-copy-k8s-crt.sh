@@ -7,7 +7,11 @@
 # this pattern would work for any institution that stores its cluster
 # certificates on a shared filesystem.
 
+HOME=/home/${USER}
+
+ssh $HOSTNAME bash -c "
 cp /dls_sw/apps/kubernetes/pollux/ca.crt ${HOME}/.kube/pollux.crt
 sed -i s=/dls_sw/apps/kubernetes/pollux/ca.crt=pollux.crt= ${HOME}/.kube/config_pollux
 cp /dls_sw/apps/kubernetes/argus/ca.crt ${HOME}/.kube/argus.crt
 sed -i s=/dls_sw/apps/kubernetes/argus/ca.crt=argus.crt= ${HOME}/.kube/config_argus
+"
