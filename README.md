@@ -4,4 +4,4 @@ vscode devcontainer configuration for working with EPICS Containers / Python pro
 Provides a customizable workspace for developers using the dev-u22 developer
 container.
 
-See https://epics-containers.github.io/dev-u22 tutorials for usage.
+See https://epics-containers.github.io/dev-e7 tutorials for usage.
