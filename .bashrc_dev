@@ -10,6 +10,11 @@ alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -l'
 alias l='ls $LS_OPTIONS -lA'
 
+# run the user's .bashrc_dev if it exists
+if [[ -f /home/$USER/.bashrc_dev ]] ; then
+    source /home/$USER//.bashrc_dev
+fi
+
 # setup completion
 if [[ -f /usr/share/bash-completion/completions/git ]] ; then
     source /usr/share/bash-completion/completions/git
@@ -51,9 +56,11 @@ export PS1="[\[\e[31m\]${DEV_PROMPT:-container}\[\e[m\]]${PS1}"
 # point at your cluster config file
 export KUBECONFIG=/home/${USER}/.kube/config_pollux
 # the default beamline for ec commands
-export K8S_BEAMLINE=bl45p
+export BEAMLINE=p45 # equivalent to K8S_BEAMLINE=bl45p
 # where to get HELM charts for ec commands
-export K8S_HELM_REGISTRY=ghcr.io/epics-containers
+export K8S_HELM_REGISTRY=helm-test.diamond.ac.uk/iocs
+# set to true to add /$K8S_BEAMLINE to the helm registry URL
+export K8S_HELM_REGISTRY_ADD_BEAMLINE=true
 # where to get container IMAGES for ec commands
 export K8S_IMAGE_REGISTRY=ghcr.io/epics-containers
 # the URL for the facility graylog
