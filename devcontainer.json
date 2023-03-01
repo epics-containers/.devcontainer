@@ -70,7 +70,8 @@
     // mount the parent folder so we can add peers to the workspace
     // use localWorkspaceFolder so that paths inside and outside the container match
     "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
-    "workspaceFolder": "${localWorkspaceFolder}"
+    "workspaceFolder": "${localWorkspaceFolder}",
     // add personal post install commands to run inside the container here e.g.:
-    // "postCreateCommand": "pip install -r requirements.txt"
+    "postCreateCommand": "/postCreateCommand.sh"
+    "
 }

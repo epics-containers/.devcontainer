@@ -29,4 +29,8 @@ RUN pip install python3-pip-skeleton[dev] epics-containers-cli
 ENV PATH=${PATH}:/cli-tools/tools
 RUN git clone https://github.com/epics-containers/cli-tools.git
 
+# copy in a script to run on container creation
+COPY postCreateCommand.sh /
+
+
 
