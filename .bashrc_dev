@@ -63,8 +63,8 @@ export K8S_HELM_REGISTRY=helm-test.diamond.ac.uk/iocs
 export K8S_HELM_REGISTRY_ADD_BEAMLINE=true
 # where to get container IMAGES for ec commands
 export K8S_IMAGE_REGISTRY=ghcr.io/epics-containers
-# the URL for the facility graylog
-export K8S_GRAYLOG_URL=https://graylog2.diamond.ac.uk
+# the URL for the facility logging system
+export K8S_LOG_URL='https://graylog2.diamond.ac.uk/search?rangetype=relative&fields=message%2Csource&width=1489&highlightMessage=&relative=172800&q=pod_name%3A{ioc_name}*'
 # set this to True to supress output of commands in 'ec' CLI
 unset K8S_QUIET
 # extra arguments to supply to containerised CLI commands
