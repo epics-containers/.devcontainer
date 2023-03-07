@@ -60,7 +60,7 @@ export BEAMLINE=p45 # equivalent to K8S_BEAMLINE=bl45p
 # where to get HELM charts for ec commands
 export K8S_HELM_REGISTRY=helm-test.diamond.ac.uk/iocs
 # set to true to add /$K8S_DOMAIN to the helm registry URL
-export K8S_HELM_REGISTRY_ADD_DOOMAIN=true
+export K8S_HELM_REGISTRY_ADD_DOMAIN=true
 # where to get container IMAGES for ec commands
 export K8S_IMAGE_REGISTRY=ghcr.io/epics-containers
 # the URL for the facility logging system
